@@ -13,10 +13,17 @@ namespace CQRS_Example.Controllers
         {
             this.dbContext = dbContext;
         }
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmploeeysAsync()
         {
             return await dbContext.Employees.ToListAsync();
+        }
+
+        [HttpGet("ListOfDepartments")]
+        public async Task<ActionResult<List<string>>> GetListOfDepartments()
+        {
+            return await dbContext.Employees.Select(x => x.Department).Distinct().ToListAsync();
         }
     }
 }

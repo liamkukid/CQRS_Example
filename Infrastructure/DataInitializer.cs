@@ -14,10 +14,6 @@ namespace CQRS_Example.Infrastructure
             {
                 return;
             }
-            var json1 = await File.ReadAllTextAsync("Infrastructure/employee.json");
-            var employee = JsonSerializer.Deserialize<Employee>(json1);
-
-
             var json = await File.ReadAllTextAsync("Infrastructure/employees.json");
             var employees = JsonSerializer.Deserialize<List<Employee>>(json);
             await context.Employees.AddRangeAsync(employees);

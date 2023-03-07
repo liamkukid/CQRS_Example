@@ -1,72 +1,191 @@
 [
   {
-      "firstName": "John",
-      "lastName": "Doe",
-      "department": "Sales",
-      "jobTitle": "Sales Representative",
-      "dateOfEmployment": "2020-01-01"
+    "id": 1,
+    "firstName": "John",
+    "lastName": "Doe",
+    "department": "Sales",
+    "jobTitle": "Sales Representative",
+    "dateOfEmployment": "2010-01-01",
+    "managerId": null
   },
   {
-      "firstName": "Jane",
-      "lastName": "Smith",
-      "department": "Marketing",
-      "jobTitle": "Marketing Coordinator",
-      "dateOfEmployment": "2019-03-15"
+    "id": 2,
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "department": "Marketing",
+    "jobTitle": "Marketing Manager",
+    "dateOfEmployment": "2012-05-01",
+    "managerId": 6
   },
   {
-      "firstName": "Bob",
-      "lastName": "Johnson",
-      "department": "Sales",
-      "jobTitle": "Sales Manager",
-      "dateOfEmployment": "2018-06-01"
+    "id": 3,
+    "firstName": "Michael",
+    "lastName": "Scott",
+    "department": "Management",
+    "jobTitle": "Regional Manager",
+    "dateOfEmployment": "2005-03-15",
+    "managerId": 8
   },
   {
-      "firstName": "Sarah",
-      "lastName": "Williams",
-      "department": "Marketing",
-      "jobTitle": "Marketing Manager",
-      "dateOfEmployment": "2017-09-01"
+    "id": 4,
+    "firstName": "Dwight",
+    "lastName": "Schrute",
+    "department": "Sales",
+    "jobTitle": "Assistant to the Regional Manager",
+    "dateOfEmployment": "2005-03-15",
+    "managerId": 3
   },
   {
-      "firstName": "Tom",
-      "lastName": "Jones",
-      "department": "Engineering",
-      "jobTitle": "Software Engineer",
-      "dateOfEmployment": "2021-02-15"
+    "id": 5,
+    "firstName": "Pam",
+    "lastName": "Beesly",
+    "department": "Administration",
+    "jobTitle": "Receptionist",
+    "dateOfEmployment": "2005-03-15",
+    "managerId": 3
   },
   {
-      "firstName": "Mike",
-      "lastName": "Brown",
-      "department": "Engineering",
-      "jobTitle": "Engineering Manager",
-      "dateOfEmployment": "2020-08-01"
+    "id": 6,
+    "firstName": "Jim",
+    "lastName": "Halpert",
+    "department": "Marketing",
+    "jobTitle": "Sales Representative",
+    "dateOfEmployment": "2005-03-15",
+    "managerId": 2
   },
   {
-      "firstName": "Emily",
-      "lastName": "Davis",
-      "department": "Human Resources",
-      "jobTitle": "HR Coordinator",
-      "dateOfEmployment": "2019-05-01"
+    "id": 7,
+    "firstName": "Angela",
+    "lastName": "Martin",
+    "department": "Accounting",
+    "jobTitle": "Accountant",
+    "dateOfEmployment": "2005-03-15",
+    "managerId": 8
   },
   {
-      "firstName": "David",
-      "lastName": "Lee",
-      "department": "Human Resources",
-      "jobTitle": "HR Manager",
-      "dateOfEmployment": "2018-01-01"
+    "id": 8,
+    "firstName": "David",
+    "lastName": "Wallace",
+    "department": "Management",
+    "jobTitle": "CFO",
+    "dateOfEmployment": "2001-01-01",
+    "managerId": null
   },
   {
-      "firstName": "Lisa",
-      "lastName": "Chen",
-      "department": "Accounting",
-      "jobTitle": "Accountant",
-      "dateOfEmployment": "2022-01-01"    
+    "id": 9,
+    "firstName": "Kevin",
+    "lastName": "Malone",
+    "department": "Accounting",
+    "jobTitle": "Accountant",
+    "dateOfEmployment": "2005-03-15",
+    "managerId": 7
   },
   {
-      "firstName": "Kevin",
-      "lastName": "Nguyen",
-      "department": "Accounting",
-      "jobTitle": "Accounting Manager",
-      "dateOfEmployment": "2021-06-01"    
+    "id": 10,
+    "firstName": "Ryan",
+    "lastName": "Howard",
+    "department": "Temp",
+    "jobTitle": "Temp",
+    "dateOfEmployment": "2005-03-15",
+    "managerId": 2
+  },
+  {
+    "id": 11,
+    "firstName": "Stanley",
+    "lastName": "Hudson",
+    "department": "Sales",
+    "jobTitle": "Sales Representative",
+    "dateOfEmployment": "2005-03-15",
+    "managerId": 3
+  },
+  {
+    "id": 12,
+    "firstName": "Meredith",
+    "lastName": "Palmer",
+    "department": "Supplier Relations",
+    "jobTitle": "Supplier Relations Representative",
+    "dateOfEmployment": "2003-06-23",
+    "managerId": 7
+  },
+  {
+    "id": 13,
+    "firstName": "Oscar",
+    "lastName": "Martinez",
+    "department": "Accounting",
+    "jobTitle": "Accountant",
+    "dateOfEmployment": "2005-03-15",
+    "managerId": 7
+  },
+  {
+    "id": 14,
+    "firstName": "Phyllis",
+    "lastName": "Lapin-Vance",
+    "department": "Sales",
+    "jobTitle": "Sales Representative",
+    "dateOfEmployment": "2005-03-15",
+    "managerId": 3
+  },
+  {
+    "id": 15,
+    "firstName": "Creed",
+    "lastName": "Bratton",
+    "department": "Quality Assurance",
+    "jobTitle": "Quality Assurance Representative",
+    "dateOfEmployment": "2005-03-15",
+    "managerId": 8
+  },
+  {
+    "id": 16,
+    "firstName": "Kelly",
+    "lastName": "Kapoor",
+    "department": "Customer Service",
+    "jobTitle": "Customer Service Representative",
+    "dateOfEmployment": "2005-03-15",
+    "managerId": 7
+  },
+  {
+    "id": 17,
+    "firstName": "Toby",
+    "lastName": "Flenderson",
+    "department": "Human Resources",
+    "jobTitle": "Human Resources Representative",
+    "dateOfEmployment": "2005-03-15",
+    "managerId": 8
+  },
+  {
+    "id": 18,
+    "firstName": "Andy",
+    "lastName": "Bernard",
+    "department": "Sales",
+    "jobTitle": "Regional Director",
+    "dateOfEmployment": "2008-09-22",
+    "managerId": 3
+  },
+  {
+    "id": 19,
+    "firstName": "Erin",
+    "lastName": "Hannon",
+    "department": "Reception",
+    "jobTitle": "Receptionist",
+    "dateOfEmployment": "2009-03-02",
+    "managerId": 5
+  },
+  {
+    "id": 20,
+    "firstName": "Darryl",
+    "lastName": "Philbin",
+    "department": "Warehouse",
+    "jobTitle": "Warehouse Foreman",
+    "dateOfEmployment": "2005-03-15",
+    "managerId": 3
+  },
+  {
+    "id": 21,
+    "firstName": "Gabe",
+    "lastName": "Lewis",
+    "department": "Sabre",
+    "jobTitle": "Marketing Coordinator",
+    "dateOfEmployment": "2010-08-05",
+    "managerId": 2
   }
 ]

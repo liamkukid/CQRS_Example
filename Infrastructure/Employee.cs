@@ -6,7 +6,8 @@ namespace CQRS_Example.Infrastructure;
 
 public class Employee
 {
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [JsonPropertyName("id")]
+    [DatabaseGenerated(DatabaseGeneratedOption.None)]
     [Key]
     [Required]
     public int Id { get; set; }
@@ -30,4 +31,7 @@ public class Employee
     [Required]
     [JsonPropertyName("dateOfEmployment")]
     public DateTime DateOfEmployment { get; set; }
+
+    [JsonPropertyName("managerId")]
+    public int? ManagerId { get; set; }
 }
