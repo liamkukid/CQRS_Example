@@ -1,12 +1,33 @@
-﻿namespace CQRS_Example.Infrastructure;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
+
+namespace CQRS_Example.Infrastructure;
 
 public class Employee
 {
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Key]
+    [Required]
     public int Id { get; set; }
+
+    [Required]
+    [JsonPropertyName("firstName")]
     public string FirstName { get; set; }
+
+    [Required]
+    [JsonPropertyName("lastName")]
     public string LastName { get; set; }
+
+    [Required]
+    [JsonPropertyName("department")]
     public string Department { get; set; }
+
+    [Required]
+    [JsonPropertyName("jobTitle")]
     public string JobTitle { get; set; }
+
+    [Required]
+    [JsonPropertyName("dateOfEmployment")]
     public DateTime DateOfEmployment { get; set; }
-    public int? ManagerId { get; set; }
 }

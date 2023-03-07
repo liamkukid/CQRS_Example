@@ -14,8 +14,12 @@ namespace CQRS_Example.Infrastructure
             {
                 return;
             }
-            var file = await File.ReadAllTextAsync("employees.json");
-            var employees = JsonSerializer.Deserialize<Employee>(file);
+            var json1 = await File.ReadAllTextAsync("Infrastructure/employee.json");
+            var employee = JsonSerializer.Deserialize<Employee>(json1);
+
+
+            var json = await File.ReadAllTextAsync("Infrastructure/employees.json");
+            var employees = JsonSerializer.Deserialize<List<Employee>>(json);
             await context.Employees.AddRangeAsync(employees);
             await context.SaveChangesAsync();
             logger.LogInformation("The data were initialized");

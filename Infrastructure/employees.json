@@ -1,94 +1,72 @@
-{
-  "employees": [
-    {
-      "id": 1,
+[
+  {
       "firstName": "John",
       "lastName": "Doe",
       "department": "Sales",
       "jobTitle": "Sales Representative",
-      "dateOfEmployment": "2020-01-01",
-      "managerId": 3
-    },
-    {
-      "id": 2,
+      "dateOfEmployment": "2020-01-01"
+  },
+  {
       "firstName": "Jane",
       "lastName": "Smith",
       "department": "Marketing",
       "jobTitle": "Marketing Coordinator",
-      "dateOfEmployment": "2019-03-15",
-      "managerId": 4
-    },
-    {
-      "id": 3,
+      "dateOfEmployment": "2019-03-15"
+  },
+  {
       "firstName": "Bob",
       "lastName": "Johnson",
       "department": "Sales",
       "jobTitle": "Sales Manager",
-      "dateOfEmployment": "2018-06-01",
-      "managerId": null
-    },
-    {
-      "id": 4,
+      "dateOfEmployment": "2018-06-01"
+  },
+  {
       "firstName": "Sarah",
       "lastName": "Williams",
       "department": "Marketing",
       "jobTitle": "Marketing Manager",
-      "dateOfEmployment": "2017-09-01",
-      "managerId": null
-    },
-    {
-      "id": 5,
+      "dateOfEmployment": "2017-09-01"
+  },
+  {
       "firstName": "Tom",
       "lastName": "Jones",
       "department": "Engineering",
       "jobTitle": "Software Engineer",
-      "dateOfEmployment": "2021-02-15",
-      "managerId": 6
-    },
-    {
-      "id": 6,
+      "dateOfEmployment": "2021-02-15"
+  },
+  {
       "firstName": "Mike",
       "lastName": "Brown",
       "department": "Engineering",
       "jobTitle": "Engineering Manager",
-      "dateOfEmployment": "2020-08-01",
-      "managerId": null
-    },
-    {
-      "id": 7,
+      "dateOfEmployment": "2020-08-01"
+  },
+  {
       "firstName": "Emily",
       "lastName": "Davis",
       "department": "Human Resources",
       "jobTitle": "HR Coordinator",
-      "dateOfEmployment": "2019-05-01",
-      "managerId": 8
-    },
-    {
-      "id": 8,
+      "dateOfEmployment": "2019-05-01"
+  },
+  {
       "firstName": "David",
       "lastName": "Lee",
       "department": "Human Resources",
       "jobTitle": "HR Manager",
-      "dateOfEmployment": "2018-01-01",
-      "managerId": null
-    },
-    {
-      "id": 9,
+      "dateOfEmployment": "2018-01-01"
+  },
+  {
       "firstName": "Lisa",
       "lastName": "Chen",
       "department": "Accounting",
       "jobTitle": "Accountant",
-      "dateOfEmployment": "2022-01-01",
-      "managerId": 10
-    },
-    {
-      "id": 10,
+      "dateOfEmployment": "2022-01-01"    
+  },
+  {
       "firstName": "Kevin",
       "lastName": "Nguyen",
       "department": "Accounting",
       "jobTitle": "Accounting Manager",
-      "dateOfEmployment": "2021-06-01",
-      "managerId": null
-    }
-  ]
-}
+      "dateOfEmployment": "2021-06-01"    
+  }
+]
