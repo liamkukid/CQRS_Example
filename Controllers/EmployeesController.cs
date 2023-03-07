@@ -25,5 +25,12 @@ namespace CQRS_Example.Controllers
         {
             return await dbContext.Employees.Select(x => x.Department).Distinct().ToListAsync();
         }
+
+        [HttpGet("ManagerAndDirectSubordinates")]
+        public async Task<ActionResult<IEnumerable<Employee>>> GetManagerAndDirectSubordinates()
+        {
+            var manager = await dbContext.Employees.SingleOrDefaultAsync(x => x.JobTitle == "Regional Manager");
+            return await dbContext.Employees.Where(x => x.ManagerId == manager.Id).ToListAsync();
+        }
     }
 }
