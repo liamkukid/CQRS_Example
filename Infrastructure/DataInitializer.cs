@@ -4,9 +4,7 @@ namespace CQRS_Example.Infrastructure;
 
 public static class DataInitializer
 {
-    public static async Task InitializeDataAsync(
-    ApplicationDbContext context,
-    ILogger logger)
+    public static async Task InitializeDataAsync(ApplicationDbContext context, ILogger logger)
     {
         logger.LogInformation("----- Start initializing the data -----");
         var json = await File.ReadAllTextAsync("Infrastructure/employees.json");

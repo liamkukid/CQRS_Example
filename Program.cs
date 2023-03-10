@@ -1,14 +1,16 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddScoped<IMediator, Mediator>();
-builder.Services.AddScoped(typeof(ICommandHandler<ChangeDepartmentCommand>), typeof(ChangeDepartmentCommandHandler));
-
-builder.Services.AddScoped<IEmployeesDao, EmployeesDao>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.EnableSensitiveDataLogging();
     options.UseInMemoryDatabase("Employees_DB");
 });
+
+builder.Services.AddScoped(typeof(ICommandHandler<ChangeDepartmentCommand>), typeof(ChangeDepartmentCommandHandler));
+
+builder.Services.AddScoped<IEmployeesDao, EmployeesDao>();
+builder.Services.AddScoped<IValidator, Validator>();
+builder.Services.AddScoped<IMediator, Mediator>();
 
 builder.Services.AddControllers();
 
