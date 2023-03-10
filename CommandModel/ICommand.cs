@@ -2,4 +2,5 @@
 
 public interface ICommand
 {
+    public Guid Id { get; }
 }

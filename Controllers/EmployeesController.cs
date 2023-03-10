@@ -1,46 +1,61 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
 
-namespace CQRS_Example.Controllers
+namespace CQRS_Example.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class EmployeesController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class EmployeesController : ControllerBase
+    private readonly IEmployeesDao employeesDao;
+    private readonly IMediator mediator;
+
+    public EmployeesController(IEmployeesDao employeesDao, IMediator mediator)
     {
-        private readonly IEmployeesDao employeesDao;
+        this.employeesDao = employeesDao;
+        this.mediator = mediator;
+    }
 
-        public EmployeesController(ApplicationDbContext dbContext, IEmployeesDao employeesDao)
-        {
-            this.employeesDao = employeesDao;
-        }
+    [HttpGet]
+    public async Task<ICollection<EmployeeDisplay>> GetEmployeesAsync()
+    {
+        return await employeesDao.GetAllAsync();
+    }
 
-        [HttpGet]
-        public async Task<ICollection<EmployeeDisplay>> GetEmployeesAsync()
-        {
-            return await employeesDao.GetAllAsync();
-        }
+    [HttpGet("Departments")]
+    public async Task<ICollection<string>> Departments()
+    {
+        return await employeesDao.GetAllDepartmentsAsync();
+    }
 
-        [HttpGet("Departments")]
-        public async Task<ICollection<string>> Departments()
-        {
-            return await employeesDao.GetAllDepartmentsAsync();
-        }
+    [HttpGet]
+    [Route("GetManagerAndTeam", Name = "managerId")]
+    public async Task<ManagerAndTeam> GetManagerAndTeam(int managerId)
+    {
+        return await employeesDao.GetManagerAndTeamAsync(managerId);
+    }
 
-        [HttpGet]
-        [Route("GetManagerAndTeam", Name = "managerId")]
-        public async Task<ManagerAndTeam> GetManagerAndTeam(int managerId)
-        {
-            return await employeesDao.GetManagerAndTeamAsync(managerId);
-        }
+    [HttpGet]
+    [Route("GetDepartmentEmployees", Name = "department")]
+    public async Task<ActionResult<ICollection<EmployeeDisplay>>> GetDepartmentEmployees(string department)
+    {
+        bool isValid = Regex.IsMatch(department, @"^[a-zA-Z]+$");
+        if (!isValid) return BadRequest();
+        var employees =  await employeesDao.GetDepartmentEmployeesAsync(department);
+        return Ok(employees);
+    }
 
-        [HttpGet]
-        [Route("GetDepartmentEmployees", Name = "department")]
-        public async Task<ActionResult<ICollection<EmployeeDisplay>>> GetDepartmentEmployees(string department)
+    [HttpPost]
+    public async Task<ActionResult> ChangeDepartment(
+        int employeerId, string newDepartmentName, string newJobTitle)
+    {
+        var command = new ChangeDepartmentCommand()
         {
-            bool isValid = Regex.IsMatch(department, @"^[a-zA-Z]+$");
-            if (!isValid) return BadRequest();
-            var employees =  await employeesDao.GetDepartmentEmployeesAsync(department);
-            return Ok(employees);
-        }
+            EmployeerId = employeerId,
+            NewDepartment = newDepartmentName,
+            NewJobTitle = newJobTitle
+        };
+        await mediator.Send(command);
+        return Ok();
     }
 }
