@@ -1,20 +1,19 @@
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IEmployeesDao, EmployeesDao>();
-
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.EnableSensitiveDataLogging();
     options.UseInMemoryDatabase("Employees_DB");
 });
+
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -32,7 +31,7 @@ using (var scope = app.Services.CreateScope())
     }
     catch (Exception ex)
     {
-        logger.LogError(ex, "An error occurred creating the DB.");
+        logger.LogError(ex, "---- An error occurred creating the DB. ----");
     }
 }
 

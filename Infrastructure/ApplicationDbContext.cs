@@ -1,4 +1,6 @@
-﻿public class ApplicationDbContext : DbContext
+﻿namespace CQRS_Example.Infrastructure;
+
+public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
