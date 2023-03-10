@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
 
 namespace CQRS_Example.Controllers
@@ -9,40 +7,40 @@ namespace CQRS_Example.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        private readonly ApplicationDbContext dbContext;
+        private readonly IEmployeesDao employeesDao;
 
-        public EmployeesController(ApplicationDbContext dbContext)
+        public EmployeesController(ApplicationDbContext dbContext, IEmployeesDao employeesDao)
         {
-            this.dbContext = dbContext;
+            this.employeesDao = employeesDao;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetEmploeeysAsync()
+        public async Task<ICollection<EmployeeDisplay>> GetEmployeesAsync()
         {
-            return await dbContext.Employees.ToListAsync();
+            return await employeesDao.GetAllAsync();
         }
 
         [HttpGet("Departments")]
-        public async Task<ActionResult<List<string>>> Departments()
+        public async Task<ICollection<string>> Departments()
         {
-            return await dbContext.Employees.Select(x => x.Department).Distinct().ToListAsync();
-        }
-
-        [HttpGet("ManagerAndSubordinates")]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetManagerAndSubordinates()
-        {
-            var manager = await dbContext.Employees.SingleOrDefaultAsync(x => x.JobTitle == "Regional Manager");
-            return await dbContext.Employees.Where(x => x.ManagerId == manager.Id).ToListAsync();
+            return await employeesDao.GetAllDepartmentsAsync();
         }
 
         [HttpGet]
-        [Route("GetDepartmentEmployees", Name = "departament")]
-        public async Task<ActionResult<IEnumerable<string>>> GetDepartmentEmployees(string departament)
+        [Route("GetManagerAndTeam", Name = "managerId")]
+        public async Task<ManagerAndTeam> GetManagerAndTeam(int managerId)
         {
-            bool isValid = Regex.IsMatch(departament, @"^[a-zA-Z]+$");
+            return await employeesDao.GetManagerAndTeamAsync(managerId);
+        }
+
+        [HttpGet]
+        [Route("GetDepartmentEmployees", Name = "department")]
+        public async Task<ActionResult<ICollection<EmployeeDisplay>>> GetDepartmentEmployees(string department)
+        {
+            bool isValid = Regex.IsMatch(department, @"^[a-zA-Z]+$");
             if (!isValid) return BadRequest();
-            return await dbContext.Employees
-                .Where(x => x.Department.Equals(departament, StringComparison.OrdinalIgnoreCase)).Select(x => $"{x.FirstName} {x.LastName}").ToListAsync();
+            var employees =  await employeesDao.GetDepartmentEmployeesAsync(department);
+            return Ok(employees);
         }
     }
 }

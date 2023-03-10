@@ -1,5 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddScoped<IEmployeesDao, EmployeesDao>();
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.EnableSensitiveDataLogging();
