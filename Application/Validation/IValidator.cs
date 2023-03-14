@@ -1,4 +1,4 @@
-﻿namespace CQRS_Example.Utilities.Validation;
+﻿namespace CQRS_Example.Application.Validation;
 
 public interface IValidator
 {

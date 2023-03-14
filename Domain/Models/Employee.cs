@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace CQRS_Example.Infrastructure;
+namespace CQRS_Example.Domain.Models;
 
 public class Employee
 {

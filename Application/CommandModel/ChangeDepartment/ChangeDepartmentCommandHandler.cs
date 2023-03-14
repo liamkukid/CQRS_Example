@@ -1,4 +1,4 @@
-﻿namespace CQRS_Example.CommandModel.ChangeDepartment;
+﻿namespace CQRS_Example.Application.CommandModel.ChangeDepartment;
 
 public class ChangeDepartmentCommandHandler : ICommandHandler<ChangeDepartmentCommand>
 {

@@ -1,4 +1,4 @@
-﻿namespace CQRS_Example.CommandModel;
+﻿namespace CQRS_Example.Application.CommandModel;
 
 public interface ICommandHandler<in T> where T : ICommand
 {

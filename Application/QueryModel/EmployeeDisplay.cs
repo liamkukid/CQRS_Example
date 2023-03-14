@@ -1,4 +1,4 @@
-﻿namespace CQRS_Example.QueryModel;
+﻿namespace CQRS_Example.Application.QueryModel;
 
 public record EmployeeDisplay
 {

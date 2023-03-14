@@ -1,4 +1,4 @@
-﻿namespace CQRS_Example.Utilities.Validation;
+﻿namespace CQRS_Example.Application.Validation;
 
 public class Validator : IValidator
 {
@@ -11,13 +11,13 @@ public class Validator : IValidator
         this.employeesDao = employeesDao;
     }
 
-    public async Task<ValidationResult> ValidateAsync<TCommand>(TCommand command) 
+    public async Task<ValidationResult> ValidateAsync<TCommand>(TCommand command)
         where TCommand : ICommand
     {
         switch (command)
         {
             case ChangeDepartmentCommand:
-                { 
+                {
                     return await ValidateChangeDepartmentCommandAsync(command as ChangeDepartmentCommand);
                 }
             default: throw new NotImplementedException($"Validation for \"{nameof(command)}\" command does not implemented");
@@ -59,7 +59,7 @@ public class Validator : IValidator
 
         // ... and other necessary validations...
 
-        result.IsValid = (result.Errors.Count == 0) ? true : false;
+        result.IsValid = result.Errors.Count == 0 ? true : false;
         return result;
     }
 }
