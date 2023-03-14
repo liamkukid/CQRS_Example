@@ -1,4 +1,4 @@
-﻿namespace CQRS_Example.Application.CommandModel;
+﻿namespace CQRS_Example.Utilities.Mediator;
 
 public interface ICommand
 {

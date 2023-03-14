@@ -1,4 +1,4 @@
-﻿namespace CQRS_Example.Utilities;
+﻿namespace CQRS_Example.Utilities.Mediator;
 
 public class Mediator : IMediator
 {
@@ -21,7 +21,7 @@ public class Mediator : IMediator
         {
             throw new ArgumentException(string.Join(";\n\t", validation.Errors));
         }
-        if(processedCommands.Contains(command.Id))
+        if (processedCommands.Contains(command.Id))
         {
             //Here must be the logic for the case when the same command has been handled twice
             //(in case if you are implementing CQRS in a distributed system)
@@ -30,5 +30,11 @@ public class Mediator : IMediator
         }
         var service = serviceProvider.GetService<ICommandHandler<TCommand>>();
         await service.Handle(command);
+    }
+
+    public async Task Publish<TNotification>(TNotification notification) where TNotification : INotification
+    {
+        var notificationService = serviceProvider.GetService<INotificationHandler<TNotification>>();
+        await notificationService.Handle(notification);
     }
 }
