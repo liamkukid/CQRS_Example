@@ -1,3 +1,5 @@
+using CQRS_Example.Application.DomainEventHandlers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -6,7 +8,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseInMemoryDatabase("Employees_DB");
 });
 
-builder.Services.AddScoped(typeof(ICommandHandler<ChangeDepartmentCommand>), typeof(ChangeDepartmentCommandHandler));
+builder.Services.AddScoped(
+    typeof(ICommandHandler<ChangeDepartmentCommand>), 
+    typeof(ChangeDepartmentCommandHandler));
+
+builder.Services.AddScoped(
+    typeof(INotificationHandler<DepartmentChangedNotification>), 
+    typeof(DepartmentChangedNotificationHandler));
 
 builder.Services.AddScoped<IEmployeesDao, EmployeesDao>();
 builder.Services.AddScoped<IValidator, Validator>();
