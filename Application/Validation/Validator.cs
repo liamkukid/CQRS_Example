@@ -16,9 +16,9 @@ public class Validator : IValidator
     {
         switch (command)
         {
-            case ChangeDepartmentCommand:
+            case ChangeDepartmentCommand changeDepartmentCommand:
                 {
-                    return await ValidateChangeDepartmentCommandAsync(command as ChangeDepartmentCommand);
+                    return await ValidateChangeDepartmentCommandAsync(changeDepartmentCommand);
                 }
             default: throw new NotImplementedException($"Validation for \"{nameof(command)}\" command does not implemented");
         }
