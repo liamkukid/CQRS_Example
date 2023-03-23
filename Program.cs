@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.EnableSensitiveDataLogging();
-    options.UseInMemoryDatabase("Employees_DB");
+    options.UseSqlite("Data Source=employees.db");
 });
 
 builder.Services.AddScoped(
