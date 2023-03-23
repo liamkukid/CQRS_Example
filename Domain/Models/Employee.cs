@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace CQRS_Example.Domain.Models;
 
-public class Employee
+public class Employee : Entity
 {
     [JsonPropertyName("id")]
     [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -34,4 +34,11 @@ public class Employee
 
     [JsonPropertyName("managerId")]
     public int? ManagerId { get; set; }
+
+    public void ChangeDepartment(string newDepartment, string newJobTitle)
+    {
+        Department = newDepartment;
+        JobTitle = newJobTitle;
+        AddDomainEvent(new DepartmentChangedNotification() { Employee = this });
+    }
 }

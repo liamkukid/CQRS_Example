@@ -2,12 +2,10 @@
 
 public class Validator : IValidator
 {
-    private readonly ApplicationDbContext dbContext;
     private readonly IEmployeesDao employeesDao;
 
-    public Validator(ApplicationDbContext dbContext, IEmployeesDao employeesDao)
+    public Validator(IEmployeesDao employeesDao)
     {
-        this.dbContext = dbContext;
         this.employeesDao = employeesDao;
     }
 
@@ -39,7 +37,7 @@ public class Validator : IValidator
             return result;
         }
 
-        var employee = await dbContext.Employees.FirstOrDefaultAsync(x => x.Id == command.EmployeerId);
+        var employee = await employeesDao.FindAsync(command.EmployeerId);
         if (employee == null)
         {
             result.Errors.Add("Employee with such id does not exist");

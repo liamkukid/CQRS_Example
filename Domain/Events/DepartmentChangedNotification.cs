@@ -2,10 +2,9 @@
 
 public class DepartmentChangedNotification : INotification
 {
-    public Employee Employee { get; }
+    public Employee Employee { get; set; }
 
-    public DepartmentChangedNotification(Employee employee)
+    public DepartmentChangedNotification()
     {
-        Employee = employee;
     }
 }

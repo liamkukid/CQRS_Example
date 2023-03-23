@@ -8,11 +8,11 @@ public class ChangeDepartmentCommandHandler : ICommandHandler<ChangeDepartmentCo
     {
         this.dbContext = dbContext;
     }
+
     public async Task Handle(ChangeDepartmentCommand command)
     {
-        var employee = await dbContext.Employees.FirstAsync(x => x.Id == command.EmployeerId);
-        employee.Department = command.NewDepartment;
-        employee.JobTitle = command.NewJobTitle;
-        await dbContext.SaveChangesAsync();
+        var employee = await dbContext.Employees.FindAsync(command.EmployeerId);
+        employee.ChangeDepartment(command.NewDepartment, command.NewJobTitle);
+        await dbContext.SaveEntitiesAsync();
     }
 }

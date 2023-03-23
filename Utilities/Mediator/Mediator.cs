@@ -1,4 +1,6 @@
-﻿namespace CQRS_Example.Utilities.Mediator;
+﻿using CQRS_Example.Application.DomainEventHandlers;
+
+namespace CQRS_Example.Utilities.Mediator;
 
 public class Mediator : IMediator
 {
