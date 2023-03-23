@@ -22,6 +22,14 @@ public class EmployeesController : ControllerBase
         return await employeesDao.GetAllAsync();
     }
 
+    [HttpGet]
+    [Route("GetEmployee", Name = "id")]
+    public async Task<EmployeeDisplay> GetEmployee(int id)
+    {
+        return await employeesDao.FindAsync(id);
+    }
+
+
     [HttpGet("Departments")]
     public async Task<ICollection<string>> Departments()
     {
