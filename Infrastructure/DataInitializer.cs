@@ -7,6 +7,11 @@ public static class DataInitializer
     public static async Task InitializeDataAsync(ApplicationDbContext context, ILogger logger)
     {
         logger.LogInformation("----- Start initializing the data -----");
+        context.Database.EnsureCreated();
+        if (context.Employees.Any())
+        {
+            return;
+        }
         var json = await File.ReadAllTextAsync("Infrastructure/employees.json");
         var employees = JsonSerializer.Deserialize<List<Employee>>(json);
         await context.Employees.AddRangeAsync(employees);
