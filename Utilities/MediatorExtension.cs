@@ -1,4 +1,4 @@
-﻿namespace CQRS_Example.Utilities.Mediator;
+﻿namespace CQRS_Example.Utilities;
 
 public static class MediatorExtension
 {
@@ -16,6 +16,6 @@ public static class MediatorExtension
             .ForEach(entity => entity.Entity.ClearDomainEvents());
 
         foreach (var domainEvent in domainEvents)
-            await mediator.Publish(domainEvent as DepartmentChangedNotification);
+            await mediator.Publish(domainEvent);// as DepartmentChangedNotification);
     }
 }

@@ -1,4 +1,5 @@
 using CQRS_Example.Application.DomainEventHandlers;
+using System.Net.NetworkInformation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,17 +9,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite("Data Source=employees.db");
 });
 
-builder.Services.AddScoped(
-    typeof(ICommandHandler<ChangeDepartmentCommand>), 
-    typeof(ChangeDepartmentCommandHandler));
-
-builder.Services.AddScoped(
-    typeof(INotificationHandler<DepartmentChangedNotification>), 
-    typeof(DepartmentChangedNotificationHandler));
+builder.Services.AddMediatR(cfg =>
+{
+    cfg.RegisterServicesFromAssemblies(typeof(ChangeDepartmentCommand).Assembly);
+});
 
 builder.Services.AddScoped<IEmployeesDao, EmployeesDao>();
 builder.Services.AddScoped<IValidator, Validator>();
-builder.Services.AddScoped<IMediator, Mediator>();
 
 builder.Services.AddControllers();
 

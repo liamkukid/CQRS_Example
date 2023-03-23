@@ -2,5 +2,5 @@
 
 public interface IValidator
 {
-    Task<ValidationResult> ValidateAsync<TCommand>(TCommand command) where TCommand : ICommand;
+    Task<ValidationResult> ValidateAsync<TCommand>(TCommand command) where TCommand : IRequest;
 }

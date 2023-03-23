@@ -10,7 +10,7 @@ public class Validator : IValidator
     }
 
     public async Task<ValidationResult> ValidateAsync<TCommand>(TCommand command)
-        where TCommand : ICommand
+        where TCommand : IRequest
     {
         switch (command)
         {

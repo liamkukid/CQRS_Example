@@ -1,4 +1,6 @@
-﻿namespace CQRS_Example.Infrastructure;
+﻿using CQRS_Example.Utilities;
+
+namespace CQRS_Example.Infrastructure;
 
 public class ApplicationDbContext : DbContext
 {

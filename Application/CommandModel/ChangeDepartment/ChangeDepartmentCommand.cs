@@ -1,6 +1,6 @@
 ﻿namespace CQRS_Example.Application.CommandModel.ChangeDepartment;
 
-public class ChangeDepartmentCommand : ICommand
+public class ChangeDepartmentCommand : IRequest
 {
     public Guid Id { get; }
 

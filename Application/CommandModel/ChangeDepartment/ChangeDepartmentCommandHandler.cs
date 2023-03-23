@@ -1,6 +1,6 @@
 ﻿namespace CQRS_Example.Application.CommandModel.ChangeDepartment;
 
-public class ChangeDepartmentCommandHandler : ICommandHandler<ChangeDepartmentCommand>
+public class ChangeDepartmentCommandHandler : IRequestHandler<ChangeDepartmentCommand>
 {
     private readonly ApplicationDbContext dbContext;
 
@@ -9,10 +9,10 @@ public class ChangeDepartmentCommandHandler : ICommandHandler<ChangeDepartmentCo
         this.dbContext = dbContext;
     }
 
-    public async Task Handle(ChangeDepartmentCommand command)
+    public async Task Handle(ChangeDepartmentCommand request, CancellationToken cancellationToken)
     {
-        var employee = await dbContext.Employees.FindAsync(command.EmployeerId);
-        employee.ChangeDepartment(command.NewDepartment, command.NewJobTitle);
+        var employee = await dbContext.Employees.FindAsync(request.EmployeerId);
+        employee.ChangeDepartment(request.NewDepartment, request.NewJobTitle);
         await dbContext.SaveEntitiesAsync();
     }
 }

@@ -3,8 +3,4 @@
 public class DepartmentChangedNotification : INotification
 {
     public Employee Employee { get; set; }
-
-    public DepartmentChangedNotification()
-    {
-    }
 }

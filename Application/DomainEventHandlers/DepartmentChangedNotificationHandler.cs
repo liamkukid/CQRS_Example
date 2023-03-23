@@ -2,15 +2,9 @@
 
 public class DepartmentChangedNotificationHandler : INotificationHandler<DepartmentChangedNotification>
 {
-    public DepartmentChangedNotificationHandler()
-    {
-        
-    }
-
-    public Task Handle(DepartmentChangedNotification notification)
-    {
-        // send integration event to other parts of system
-
+    public Task Handle(DepartmentChangedNotification notification, CancellationToken cancellationToken)
+    { 
+        // send integration event to other parts of system{
         return Task.CompletedTask;
     }
 }
