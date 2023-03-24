@@ -1,6 +1,3 @@
-using CQRS_Example.Application.DomainEventHandlers;
-using System.Net.NetworkInformation;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

@@ -1,5 +1,4 @@
-﻿using System.Data;
-using Dapper;
+﻿using Dapper;
 
 namespace CQRS_Example.Application.QueryModel;
 
