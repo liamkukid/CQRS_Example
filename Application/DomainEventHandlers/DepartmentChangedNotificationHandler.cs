@@ -4,7 +4,8 @@ public class DepartmentChangedNotificationHandler : INotificationHandler<Departm
 {
     public Task Handle(DepartmentChangedNotification notification, CancellationToken cancellationToken)
     { 
-        // send integration event to other parts of system
+        // 1. Execute domain logic
+        // 2. Send integration event to other parts of system
         return Task.CompletedTask;
     }
 }
