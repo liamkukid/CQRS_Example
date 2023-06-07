@@ -9,10 +9,10 @@ public class ChangeDepartmentCommandHandler : IRequestHandler<ChangeDepartmentCo
         this.dbContext = dbContext;
     }
 
-    public async Task Handle(ChangeDepartmentCommand request, CancellationToken cancellationToken)
+    public async Task Handle(ChangeDepartmentCommand command, CancellationToken cancellationToken)
     {
-        var employee = await dbContext.Employees.FindAsync(request.EmployeerId);
-        employee.ChangeDepartment(request.NewDepartment, request.NewJobTitle);
+        var employee = await dbContext.Employees.FindAsync(command.EmployeeId);
+        employee.ChangeDepartment(command.NewDepartment, command.NewJobTitle);
         await dbContext.SaveEntitiesAsync();
     }
 }

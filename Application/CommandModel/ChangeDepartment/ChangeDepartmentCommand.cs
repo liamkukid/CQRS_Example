@@ -9,7 +9,7 @@ public class ChangeDepartmentCommand : IRequest
         Id = Guid.NewGuid();
     }
 
-    public int EmployeerId { get; set; }
+    public int EmployeeId { get; set; }
     public string NewDepartment { get; set; }
     public string NewJobTitle { get; set; }
 }

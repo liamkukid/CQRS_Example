@@ -31,13 +31,13 @@ public class Validator : IValidator
 
         if (string.IsNullOrWhiteSpace(command.NewDepartment) ||
             string.IsNullOrWhiteSpace(command.NewJobTitle) ||
-            command.EmployeerId == 0)
+            command.EmployeeId == 0)
         {
             result.Errors.Add("One or more parameters were not assigned");
             return result;
         }
 
-        var employee = await employeesDao.FindAsync(command.EmployeerId);
+        var employee = await employeesDao.FindAsync(command.EmployeeId);
         if (employee == null)
         {
             result.Errors.Add("Employee with such id does not exist");

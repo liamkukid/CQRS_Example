@@ -55,11 +55,11 @@ public class EmployeesController : ControllerBase
 
     [HttpPost]
     public async Task<ActionResult> ChangeDepartment(
-        int employeerId, string newDepartmentName, string newJobTitle)
+        int employeeId, string newDepartmentName, string newJobTitle)
     {
         var command = new ChangeDepartmentCommand()
         {
-            EmployeerId = employeerId,
+            EmployeeId = employeeId,
             NewDepartment = newDepartmentName,
             NewJobTitle = newJobTitle
         };

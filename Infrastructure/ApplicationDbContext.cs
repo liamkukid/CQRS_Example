@@ -13,7 +13,7 @@ public class ApplicationDbContext : DbContext
     }
     public DbSet<Employee> Employees { get; set; }
 
-    public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default(CancellationToken))
+    public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default)
     {
         // Dispatch Domain Events collection. 
         // Choices:
